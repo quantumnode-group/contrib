@@ -6,20 +6,19 @@
 rpcusername=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 passwd=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
- init-setup()
-{
-sudo apt-get update
-sudo apt-get upgrade
+echo "Updating System.."
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 sudo apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libboost-all-dev libboost-program-options-dev
 
 sudo apt-get install -y libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler unzip software-properties-common
 
 sudo add-apt-repository ppa:bitcoin/bitcoin
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get install -y libdb4.8-dev libdb4.8++-dev
-}
 
+clear
 
 wallet-install()
 {
@@ -78,7 +77,7 @@ chmod +x mine.sh
 ./mine.sh
 }
 
-init-setup
+#init-setup
 wallet-install
 miner
 
