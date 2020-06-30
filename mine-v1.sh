@@ -52,12 +52,14 @@ clear
 echo "Now starting the daemon . . .\n"
 qnodecoind
 
+sleep 5s
+
 clear
 }
 
  miner()
 {
-	echo "Now starting to mine..."
+
 
 	cat > $HOME/mine.sh <<EOF
 		#!/bin/bash
@@ -67,13 +69,15 @@ clear
 		echo
 		echo "Note: It may take you up to +/- 30 minutes to mine your first block"
 		echo 
-		while :
+		while true
 		do
-			./examplecoin-cli generate 1
+			qnodecoin-cli generate 1
 		done
 EOF
 
 chmod +x mine.sh
+echo "Now starting the miner"
+sleep 5s
 ./mine.sh
 }
 
