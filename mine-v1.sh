@@ -78,7 +78,7 @@ chmod +x mine.sh
 ./mine.sh
 }
 
-_init-setup()
-_wallet-install()
-_mine()
+_init-setup
+_wallet-install
+_mine
 
