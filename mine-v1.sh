@@ -6,7 +6,7 @@
 rpcusername=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 passwd=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
 
-function _init-setup()
+ init-setup()
 {
 sudo apt-get update
 sudo apt-get upgrade
@@ -21,7 +21,7 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev
 }
 
 
-function _wallet-install()
+wallet-install()
 {
 	clear
 
@@ -56,14 +56,14 @@ qnodecoind
 clear
 }
 
-function _mine()
+ miner()
 {
 	echo "Now starting to mine..."
 
 	cat > $HOME/mine.sh <<EOF
 		#!/bin/bash
-		SCRIPT_PATH=`pwd`;
-		cd $SCRIPT_PATH
+		#SCRIPT_PATH=`pwd`
+		#cd $SCRIPT_PATH
 		echo "Press [CTRL+C] to stop mining."
 		echo
 		echo "Note: It may take you up to +/- 30 minutes to mine your first block"
@@ -78,7 +78,7 @@ chmod +x mine.sh
 ./mine.sh
 }
 
-_init-setup
-_wallet-install
-_mine
+init-setup
+wallet-install
+miner
 
